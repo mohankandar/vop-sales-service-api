@@ -1,0 +1,64 @@
+# -------------------------------
+# Application Identity & Settings
+# -------------------------------
+spring:
+  application:
+    name: "@project.name@"  # Populated from pom.xml <name>
+
+  main:
+    allow-bean-definition-overriding: true
+
+  # -------------------------------
+  # Config Server Configuration
+  # -------------------------------
+  # Shared config server with dynamic branch (label) per environment
+  cloud:
+    config:
+      enabled: false
+      uri: ${CONFIG_SERVER_URI:http://localhost:8888}  # Override in env/properties
+      failFast: false
+      name: "@project.name@"  # App-specific config (e.g., vop-sales-service-api.yml)
+      label: ${CONFIG_BRANCH:main}  # Branch like dev, stage, or prod
+      profile: ${SPRING_PROFILES_ACTIVE:default}
+
+# ---------------------
+# Vault Configuration
+# ---------------------
+spring.cloud.vault:
+  enabled: false
+  failFast: false
+  host: localhost
+  port: 8200
+  scheme: http
+  token: ${VAULT_TOKEN:vaultroot}
+  kv:
+    enabled: true
+    backend: secret
+    profile-separator: /
+    default-context: application
+    application-name: "vop-sales/@project.name@"
+
+# ----------------------
+# Consul Configuration
+# ----------------------
+spring.cloud.consul:
+  enabled: false
+  host: localhost
+  port: 8500
+  config:
+    enabled: false
+    format: FILES
+    defaultContext: application
+    profileSeparator: ','
+    failFast: false
+    watch:
+      enabled: false
+      wait-time: 30
+
+  discovery:
+    enabled: false
+    register: false
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    health-check-interval: 10s
+    health-check-tls-skip-verify: true
+    scheme: http
