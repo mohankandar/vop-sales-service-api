@@ -1,0 +1,79 @@
+info:
+  build:
+    version: "@project.version@"
+    artifact: "@project.artifactId@"
+    name: "@project.name@"
+    description: "@project.description@"
+
+server:
+  port: 8080
+  max-http-header-size: 65536
+
+spring:
+  application:
+    name: vop-sales-service-api
+  config:
+    use-legacy-processing: true
+#  cache:
+#    type: redis
+#  redis:
+#    host: localhost
+#    port: 6379
+#    jedis:
+#      pool:
+#        max-wait: -1
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss
+    serialization:
+      indent_output: true
+      write-dates-as-timestamps: false
+    deserialization:
+      FAIL_ON_IGNORED_PROPERTIES: false
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+    default-property-inclusion: NON_EMPTY
+  liquibase:
+    enabled: false
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+  swagger-ui.use-root-path: true
+  override-with-generic-response: false
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match: /**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+
+vop.framework:
+  swagger:
+    enabled: true
+#  security:
+#    jwt:
+#      enabled: false
+#  rest:
+#    client:
+#      connectionTimeout: 30000
+#      readTimeout: 60000
+#      maxTotalPool: 5
+#      defaultMaxPerRoutePool: 10
+#      validateAfterInactivityPool: 10000
+
+logging:
+  level:
+    com.tnl.vop.sales: DEBUG
+    org.springframework: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: WARN

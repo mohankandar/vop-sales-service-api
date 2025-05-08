@@ -1,0 +1,13 @@
+spring:
+  profiles: prod
+#  redis:
+#    host: prod-redis-host
+#
+#vop.framework.security.jwt.enabled: true
+vop.framework.swagger.enabled: false
+
+logging:
+  level:
+    com.tnl.vop.sales: WARN
+    org.springframework: WARN
+    org.hibernate.SQL: WARN

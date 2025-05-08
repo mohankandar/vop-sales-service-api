@@ -1,0 +1,41 @@
+openapi: 3.0.1
+info:
+  title: VOP Sales service API
+  version: 1.0.0
+paths:
+  /api/interest-rate:
+    post:
+      summary: Get interest rate based on credit band
+      operationId: getRate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditBandRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InterestRateResponse'
+        '400':
+          description: Invalid input
+components:
+  schemas:
+    CreditBandRequest:
+      type: object
+      required:
+        - creditBand
+      properties:
+        creditBand:
+          type: string
+    InterestRateResponse:
+      type: object
+      properties:
+        creditBand:
+          type: string
+        rate:
+          type: number
+          format: double

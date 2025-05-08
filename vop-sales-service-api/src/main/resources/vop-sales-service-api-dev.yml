@@ -1,0 +1,6 @@
+spring:
+  profiles: dev
+#  redis:
+#    host: dev-redis-host
+#
+#vop.framework.security.jwt.enabled: true

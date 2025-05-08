@@ -1,0 +1,30 @@
+spring:
+  profiles: local
+#  redis:
+#    host: localhost
+#    port: 6379
+#
+#vop.framework.security.jwt.enabled: false
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.boot: DEBUG
+    org.springframework.web.servlet: DEBUG
+    org.springframework.context: DEBUG
+    org.springframework.beans: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springdoc: DEBUG
+    io.swagger.v3: DEBUG
+    com.tnl.vop: DEBUG
+    org.apache.catalina: DEBUG
+    org.apache.tomcat: DEBUG
+    org.apache.coyote: DEBUG
+    org.hibernate: WARN
+    io.swagger.v3.core: DEBUG
+    io.swagger.v3.oas.annotations: DEBUG
+    io.swagger.v3.parser: DEBUG
+    io.swagger.v3.models: DEBUG
+    io.swagger.v3.oas.integration: DEBUG
