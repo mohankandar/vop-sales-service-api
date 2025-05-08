@@ -100,7 +100,7 @@
                         <configuration>
                             <generatorName>spring</generatorName>
                             <inputSpec>${project.basedir}/src/main/resources/openapi/openapi.yml</inputSpec>
-                            <output>${project.build.directory}/generated-sources</output>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
                             <ignoreFileOverride>${basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <apiPackage>com.tnl.vop.sales.service.generated.api</apiPackage>
                             <modelPackage>com.tnl.vop.sales.service.generated.model.v1</modelPackage>
@@ -276,6 +276,16 @@
                         <configuration>
                             <sources>
                                 <source>${project.build.directory}/generated-sources/openapi</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-java-template-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals><goal>add-source</goal></goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/java-template</source>
                             </sources>
                         </configuration>
                     </execution>
